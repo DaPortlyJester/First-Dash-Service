@@ -27,8 +27,7 @@ public class DashGuiceH4Module implements Module {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // Thread Local here for one entity
-    private static final ThreadLocal<EntityManager> ENTITY_MANAGER_CACHE
-            = new ThreadLocal<EntityManager>();
+    private static final ThreadLocal<EntityManager> ENTITY_MANAGER_CACHE = new ThreadLocal<>();
 
     private static Properties h4Properties;
 

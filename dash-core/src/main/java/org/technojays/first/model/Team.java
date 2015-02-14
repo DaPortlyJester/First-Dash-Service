@@ -28,13 +28,12 @@ public class Team {
     @Column(name = "short_name")
     private String shortName;
 
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinTable(
-//            name = "alliances",
-//            joinColumns = {@JoinColumn(name = "team_id", referencedColumnName = "id")},
-//            inverseJoinColumns = {@JoinColumn(name = "match_id", referencedColumnName = "id")})
-//    private Set<Match> matches;
-
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "allies",
+            joinColumns = {@JoinColumn(name = "team_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "match_id", referencedColumnName = "id")})
+    private Set<Match> matches;
 
     public Long getId() {
         return id;
@@ -68,11 +67,11 @@ public class Team {
         this.shortName = shortName;
     }
 
-//    public Set<Match> getMatches() {
-//        return matches;
-//    }
-//
-//    public void setMatches(Set<Match> matches) {
-//        this.matches = matches;
-//    }
+    public Set<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(Set<Match> matches) {
+        this.matches = matches;
+    }
 }

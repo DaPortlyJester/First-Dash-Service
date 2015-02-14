@@ -1,6 +1,5 @@
 package org.technojays.first.rest;
 
-import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +12,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,13 +21,13 @@ import java.util.List;
  * REST endpoint for retrieving team information
  */
 @Path("team")
-public class TeamResource extends DashResource{
+public class TeamResource extends DashResource {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private TeamService teamService;
 
     @Inject
-    public TeamResource(TeamService teamService){
+    public TeamResource(TeamService teamService) {
         this.teamService = teamService;
     }
 
@@ -46,8 +44,7 @@ public class TeamResource extends DashResource{
     public Team getTeam(@PathParam("id") String idParam) throws DashException {
         logger.debug("Getting team by id {}", idParam);
         Long id = getLongFromParameter(idParam);
-        Team team = teamService.getTeamById(id);
-        return team;
+        return teamService.getTeamById(id);
     }
 
     /**
@@ -59,8 +56,7 @@ public class TeamResource extends DashResource{
     @Produces(MediaType.APPLICATION_JSON)
     public List<Team> getTeams() {
         logger.debug("Getting full list of teams");
-        List<Team> teams = teamService.getTeams();
-        return teams;
+        return teamService.getTeams();
     }
 
     /**
@@ -76,7 +72,6 @@ public class TeamResource extends DashResource{
     public Team getTeamByTeamNumber(@PathParam("number") String teamNumber) throws DashException {
         logger.debug("Getting team by team number {}", teamNumber);
         Long teamNum = getLongFromParameter(teamNumber);
-        Team team = teamService.getTeamByTeamNumber(teamNum);
-        return team;
+        return teamService.getTeamByTeamNumber(teamNum);
     }
 }

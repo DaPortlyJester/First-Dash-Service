@@ -1,6 +1,8 @@
 package org.technojays.first.dao;
 
+import org.technojays.first.model.Event;
 import org.technojays.first.model.Match;
+import org.technojays.first.model.MatchType;
 import org.technojays.first.model.metamodel.Match_;
 
 import javax.persistence.criteria.Predicate;
@@ -29,8 +31,8 @@ public class MatchDAO extends AbstractDAO<Match> {
     public Match getByMatchNumber(Long matchNum) {
         QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
 
-        Predicate cond1 = qc.getCriteriaBuilder().equal(qc.getRoot().get(Match_.matchNum), matchNum);
-        qc.getCriteriaQuery().where(cond1);
+        Predicate matchNumCondition = qc.getCriteriaBuilder().equal(qc.getRoot().get(Match_.matchNum), matchNum);
+        qc.getCriteriaQuery().where(matchNumCondition);
 
         return getSingleResult(qc.getCriteriaQuery());
 
@@ -43,21 +45,81 @@ public class MatchDAO extends AbstractDAO<Match> {
     }
 
     /**
-     * Retrieve matches occuring after start date
+     * Retrieve matches occurring after start date
      *
-     * @param startDateTime
-     * @return
+     * @param startDateTime DateTime to find matches after
+     * @return List of matches starting after the date
      */
     public List<Match> getMatchesAfterDate(ZonedDateTime startDateTime) {
         QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
 
-        Predicate cond1 = qc.getCriteriaBuilder().greaterThanOrEqualTo(qc.getRoot().get(Match_.start), startDateTime);
-        qc.getCriteriaQuery().where(cond1);
+        Predicate startCondition = qc.getCriteriaBuilder().greaterThanOrEqualTo(qc.getRoot().get(Match_.start), startDateTime);
+        qc.getCriteriaQuery().where(startCondition);
 
         return getResultList(qc.getCriteriaQuery());
     }
 
-    public List<Match> getMatchesEndingBeforeDate(ZonedDateTime endDateTime)
+    /**
+     * Retrieve matches occurring between start and end DateTime provided
+     *
+     * @param fromDate Start of date time range
+     * @param endDate End of date time range
+     * @return List of matches in range
+     */
+    public List<Match> getMatchesBetweenDate(ZonedDateTime fromDate, ZonedDateTime endDate) {
+        QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
 
+        Predicate rangeCondition = qc.getCriteriaBuilder().between(qc.getRoot().get(Match_.start), fromDate, endDate);
+        qc.getCriteriaQuery().where(rangeCondition);
+
+        return getResultList(qc.getCriteriaQuery());
+    }
+
+    /**
+     * Retrieve matches for the given event
+     *
+     * @param event Event to find matches for
+     * @return List of matches for event
+     */
+    public List<Match> getMatchesForEvent(Event event) {
+        QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
+
+        Predicate eventCondition = qc.getCriteriaBuilder().equal(qc.getRoot().get(Match_.event), event);
+        qc.getCriteriaQuery().where(eventCondition);
+
+        return getResultList(qc.getCriteriaQuery());
+    }
+
+    /**
+     * Retrieve matches by type
+     *
+     * @param type Match type for find
+     * @return List of matches for match type
+     */
+    public List<Match> getMatchesByType(MatchType type) {
+        QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
+
+        Predicate typeCondition = qc.getCriteriaBuilder().equal(qc.getRoot().get(Match_.type), type);
+        qc.getCriteriaQuery().where(typeCondition);
+
+        return getResultList(qc.getCriteriaQuery());
+    }
+
+    /**
+     * Retrieve matches by type and event
+     *
+     * @param event Event of matches
+     * @param type Type of event
+     * @return List of matches for event and type
+     */
+    public List<Match> getMatchesByEventAndType(Event event, MatchType type) {
+        QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
+
+        Predicate typeCondition = qc.getCriteriaBuilder().equal(qc.getRoot().get(Match_.type), type);
+        Predicate eventCondition = qc.getCriteriaBuilder().equal(qc.getRoot().get(Match_.event), event);
+        qc.getCriteriaQuery().where(qc.getCriteriaBuilder().and(eventCondition, typeCondition));
+
+        return getResultList(qc.getCriteriaQuery());
+    }
 
 }

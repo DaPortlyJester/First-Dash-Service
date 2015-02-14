@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -110,7 +111,7 @@ public abstract class AbstractDAO<T> {
                 .createQuery(entityClass);
         cq.select(cq.from(entityClass));
 
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
+        Query q = getEntityManager().createQuery(cq);
         q.setMaxResults(end - start);
         q.setFirstResult(start);
 
