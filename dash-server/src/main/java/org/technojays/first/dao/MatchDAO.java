@@ -4,6 +4,8 @@ import org.technojays.first.model.Match;
 import org.technojays.first.model.metamodel.Match_;
 
 import javax.persistence.criteria.Predicate;
+import java.time.ZonedDateTime;
+import java.util.List;
 
 /**
  * @author Derelle.Redmond
@@ -18,6 +20,12 @@ public class MatchDAO extends AbstractDAO<Match> {
         super(Match.class);
     }
 
+    /**
+     * Retrieve match by match number
+     *
+     * @param matchNum Match number to find
+     * @return Match associated with the given match number
+     */
     public Match getByMatchNumber(Long matchNum) {
         QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
 
@@ -33,4 +41,23 @@ public class MatchDAO extends AbstractDAO<Match> {
 //        criteria.where(builder.equal(matchRoot.get(Match_.matchNum), matchNum));
 //        return entityManager.createQuery(criteria).getSingleResult();
     }
+
+    /**
+     * Retrieve matches occuring after start date
+     *
+     * @param startDateTime
+     * @return
+     */
+    public List<Match> getMatchesAfterDate(ZonedDateTime startDateTime) {
+        QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
+
+        Predicate cond1 = qc.getCriteriaBuilder().greaterThanOrEqualTo(qc.getRoot().get(Match_.start), startDateTime);
+        qc.getCriteriaQuery().where(cond1);
+
+        return getResultList(qc.getCriteriaQuery());
+    }
+
+    public List<Match> getMatchesEndingBeforeDate(ZonedDateTime endDateTime)
+
+
 }

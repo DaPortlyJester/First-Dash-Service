@@ -35,16 +35,75 @@ public class Match {
     @Column(name = "type")
     private MatchType type;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "alliances",
-            joinColumns = {@JoinColumn(name = "match_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "team_id", referencedColumnName = "id")}
-    )
-    private Set<Team> teams;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "match_id", referencedColumnName = "id")
+    private Set<Ally> allies;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id")
     private Set<MatchScore> scores;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getMatchNum() {
+        return matchNum;
+    }
+
+    public void setMatchNum(Long matchNum) {
+        this.matchNum = matchNum;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public ZonedDateTime getStart() {
+        return start;
+    }
+
+    public void setStart(ZonedDateTime start) {
+        this.start = start;
+    }
+
+    public MatchType getType() {
+        return type;
+    }
+
+    public void setType(MatchType type) {
+        this.type = type;
+    }
+
+    public Set<Ally> getAllies() {
+        return allies;
+    }
+
+    public void setAllies(Set<Ally> allies) {
+        this.allies = allies;
+    }
+
+    public Set<MatchScore> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<MatchScore> scores) {
+        this.scores = scores;
+    }
 }
