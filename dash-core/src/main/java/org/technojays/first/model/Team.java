@@ -30,7 +30,7 @@ public class Team {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "allies",
+            name = "allies", schema = "first",
             joinColumns = {@JoinColumn(name = "team_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "match_id", referencedColumnName = "id")})
     private Set<Match> matches;

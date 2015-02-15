@@ -20,7 +20,7 @@ import java.util.List;
  * <p/>
  * REST endpoint for retrieving team information
  */
-@Path("team")
+@Path("teams")
 public class TeamResource extends DashResource {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

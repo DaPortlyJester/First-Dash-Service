@@ -19,7 +19,7 @@ public class MatchScore {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "match_id")
     private Match match;
 
     @Column(name = "type", nullable = false)

@@ -18,7 +18,7 @@ public class Event_ {
     public static volatile SingularAttribute<Event, EventType> type;
     public static volatile SingularAttribute<Event, String> venue;
     public static volatile SingularAttribute<Event, String> location;
-    public static volatile SingularAttribute<Event, ZonedDateTime> start;
-    public static volatile SingularAttribute<Event, ZonedDateTime> end;
+    public static volatile SingularAttribute<Event, ZonedDateTime> startDate;
+    public static volatile SingularAttribute<Event, ZonedDateTime> endDate;
     public static volatile SingularAttribute<Event, String> eventCode;
 }

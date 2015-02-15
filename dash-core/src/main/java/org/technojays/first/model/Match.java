@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * @author DaPortlyJester
  * @since 1/19/2015
- *
+ * <p/>
  * Entity representing a match at a competition or event
  */
 @Entity
@@ -22,11 +22,11 @@ public class Match {
     private Long matchNum;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "game_id")
     private Game game;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "event_id")
     private Event event;
 
     @Column(name = "start_time")
@@ -42,6 +42,9 @@ public class Match {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id")
     private Set<MatchScore> scores;
+
+    @ManyToMany(mappedBy = "matches")
+    private Set<Team> teams;
 
     public Long getId() {
         return id;
@@ -105,5 +108,13 @@ public class Match {
 
     public void setScores(Set<MatchScore> scores) {
         this.scores = scores;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
     }
 }
