@@ -1,12 +1,12 @@
 package org.technojays.first.rest;
 
-import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.technojays.first.exception.DashException;
 import org.technojays.first.model.Match;
 import org.technojays.first.service.MatchService;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 

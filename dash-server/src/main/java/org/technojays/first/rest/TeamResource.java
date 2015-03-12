@@ -1,12 +1,12 @@
 package org.technojays.first.rest;
 
-import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.technojays.first.exception.DashException;
 import org.technojays.first.model.Team;
 import org.technojays.first.service.TeamService;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
