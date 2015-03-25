@@ -54,6 +54,11 @@
                     <target>${targetJdk}</target>
                     <encoding>UTF-8</encoding>
                     <debug>true</debug>
+                    <!--
+                    <compilerArguments>
+                        <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                    </compilerArguments>
+                    -->
                 </configuration>
             </plugin>
 

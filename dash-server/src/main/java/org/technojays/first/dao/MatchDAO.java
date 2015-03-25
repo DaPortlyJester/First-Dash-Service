@@ -1,10 +1,6 @@
 package org.technojays.first.dao;
 
-import org.technojays.first.model.Event;
-import org.technojays.first.model.Match;
-import org.technojays.first.model.MatchType;
-import org.technojays.first.model.Team;
-import org.technojays.first.model.metamodel.Match_;
+import org.technojays.first.model.*;
 
 import javax.persistence.criteria.Predicate;
 import java.time.ZonedDateTime;
@@ -13,7 +9,7 @@ import java.util.List;
 /**
  * @author Derelle.Redmond
  * @since 2/9/2015.
- *
+ * <p/>
  * Data Access Object for Match Entities
  */
 public class MatchDAO extends AbstractDAO<Match> {
@@ -48,7 +44,7 @@ public class MatchDAO extends AbstractDAO<Match> {
      * Retrieve match by match number and event Id
      *
      * @param matchNumber FIRST Match number
-     * @param eventId Id of the associated event
+     * @param eventId     Id of the associated event
      * @return
      */
     public Match getByMatchNumberAndEvent(Long matchNumber, Long eventId) {
@@ -80,7 +76,7 @@ public class MatchDAO extends AbstractDAO<Match> {
      * Retrieve matches occurring between start and end DateTime provided
      *
      * @param fromDate Start of date time range
-     * @param endDate End of date time range
+     * @param endDate  End of date time range
      * @return List of matches in range
      */
     public List<Match> getBetweenDates(ZonedDateTime fromDate, ZonedDateTime endDate) {
@@ -126,7 +122,7 @@ public class MatchDAO extends AbstractDAO<Match> {
      * Retrieve matches by type and event
      *
      * @param event Event of matches
-     * @param type Type of event
+     * @param type  Type of event
      * @return List of matches for event and type
      */
     public List<Match> getByEventAndType(Event event, MatchType type) {
@@ -142,7 +138,7 @@ public class MatchDAO extends AbstractDAO<Match> {
     /**
      * Retrieve matches by team and event
      *
-     * @param team Team associated with all matches
+     * @param team  Team associated with all matches
      * @param event Event associated with all matches
      * @return Matches with the given team and even
      */

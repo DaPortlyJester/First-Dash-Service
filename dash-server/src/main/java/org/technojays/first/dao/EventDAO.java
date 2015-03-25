@@ -1,7 +1,7 @@
 package org.technojays.first.dao;
 
 import org.technojays.first.model.Event;
-import org.technojays.first.model.metamodel.Event_;
+import org.technojays.first.model.Event_;
 
 import javax.persistence.criteria.Predicate;
 import java.util.List;

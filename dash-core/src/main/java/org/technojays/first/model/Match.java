@@ -43,9 +43,6 @@ public class Match {
     @JoinColumn(name = "match_id")
     private Set<MatchScore> scores;
 
-    @ManyToMany(mappedBy = "matches")
-    private Set<Team> teams;
-
     public Long getId() {
         return id;
     }
@@ -108,13 +105,5 @@ public class Match {
 
     public void setScores(Set<MatchScore> scores) {
         this.scores = scores;
-    }
-
-    public Set<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(Set<Team> teams) {
-        this.teams = teams;
     }
 }

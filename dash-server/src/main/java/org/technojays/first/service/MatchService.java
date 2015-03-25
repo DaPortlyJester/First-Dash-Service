@@ -23,7 +23,7 @@ public interface MatchService {
     public Match getById(Long id);
 
     /**
-     * Get match by FIRST match number
+     * Get matches by FIRST match number
      *
      * @param matchNum Match number to find by
      * @return List of matches that have this match Number

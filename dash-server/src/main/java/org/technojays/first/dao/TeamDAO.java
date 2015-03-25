@@ -1,8 +1,9 @@
 package org.technojays.first.dao;
 
 import org.technojays.first.model.Team;
-import org.technojays.first.model.metamodel.Team_;
+import org.technojays.first.model.Team_;
 
+import javax.persistence.PersistenceException;
 import javax.persistence.criteria.Predicate;
 import java.util.List;
 
@@ -29,7 +30,6 @@ public class TeamDAO extends AbstractDAO<Team> {
 
         Predicate cond1 = qc.getCriteriaBuilder().equal(qc.getRoot().get(Team_.teamNum), teamNum);
         qc.getCriteriaQuery().where(cond1);
-
         return getSingleResult(qc.getCriteriaQuery());
     }
 
@@ -57,7 +57,7 @@ public class TeamDAO extends AbstractDAO<Team> {
     public List<Team> getByShortName(String shortName) {
         QueryContainer<Team> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
 
-        Predicate cond1 = qc.getCriteriaBuilder().like(qc.getRoot().get(Team_.name), addLikeFilter(shortName));
+        Predicate cond1 = qc.getCriteriaBuilder().like(qc.getRoot().get(Team_.shortName), addLikeFilter(shortName));
         qc.getCriteriaQuery().where(cond1);
 
         return getResultList(qc.getCriteriaQuery());

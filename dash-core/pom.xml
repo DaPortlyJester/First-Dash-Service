@@ -34,6 +34,15 @@
             <version>${hibernate.version}</version>
         </dependency>
 
+        <!-- Uncomment for auto metamodel generation
+        Useful for verifying metamodel code
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        -->
+
         <!-- Configuration to use javax persistence 1.0
         waiting for release of javax persistence 2.1 independent jar
         <dependency>
