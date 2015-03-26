@@ -13,7 +13,7 @@
     <packaging>war</packaging>
 
     <dependencies>
-        <!--  Jersey Servlet Container, Server Base, and guice bridge for hk2 -->
+        <!--  Jersey Servlet Container, Server Base, and Guice bridge for hk2 -->
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
@@ -99,6 +99,7 @@
             <version>${dash.version}</version>
         </dependency>
 
+        <!-- Postgresql Driver for Postgresql Database support -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -134,11 +135,13 @@
             <groupId>org.jukito</groupId>
             <artifactId>jukito</artifactId>
             <version>1.4.1</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.185</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
