@@ -1,15 +1,15 @@
 # FIRST Dash REST Structure
 
 ## Top Level Entities
-*Team*
-*Game*
-*Event*
-*User / Member*
-*League*
-*Alliance*
-*Awards*
-*Locations*
-*Sponsors*  
+*Team*<br />
+*Game*<br />
+*Event*<br />
+*User / Member*<br />
+*League*<br />
+*Alliance*<br />
+*Awards*<br />
+*Locations*<br />
+*Sponsors* <br /> 
 
 
 ### Team Hierarchy
