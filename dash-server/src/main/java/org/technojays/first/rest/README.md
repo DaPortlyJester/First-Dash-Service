@@ -9,7 +9,7 @@
 *Alliance*
 *Awards*
 *Locations*
-*Sponsors*
+*Sponsors*  
 
 
 ### Team Hierarchy
