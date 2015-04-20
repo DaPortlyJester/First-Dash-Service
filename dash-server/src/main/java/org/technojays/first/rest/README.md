@@ -64,7 +64,9 @@
 * Awards collection
   * League collection
   * Game collection
+    * Event collection
 * Awards Entity
+  * Person Entity
 
 ### Locations Hierarchy
 * Locations collection
