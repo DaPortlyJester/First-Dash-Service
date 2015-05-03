@@ -9,9 +9,7 @@ import org.jvnet.hk2.guice.bridge.api.GuiceBridge;
 import org.jvnet.hk2.guice.bridge.api.GuiceIntoHK2Bridge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.technojays.first.inject.ConfigurationInjection;
-import org.technojays.first.inject.DashGuiceH4Module;
-import org.technojays.first.inject.JSONInjection;
+import org.technojays.first.inject.*;
 
 import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
@@ -37,14 +35,15 @@ public class DashAppConfig extends ResourceConfig {
         logger.info("Building Injectors");
         Injector injector = Guice.createInjector(
                 new ConfigurationInjection(),
-                new DashGuiceH4Module(),
+                new DashGuiceH4ServletModule(),
+                new DashH4ServiceInjection(),
+                //new DashGuiceH4Module(),
                 new JSONInjection()
         );
 
         PersistentInit persistenceInit = new PersistentInit();
 
         GuiceBridge.getGuiceBridge().initializeGuiceBridge(serviceLocator);
-
         GuiceIntoHK2Bridge guiceBridge = serviceLocator.getService(GuiceIntoHK2Bridge.class);
         guiceBridge.bridgeGuiceInjector(injector);
     }
@@ -59,8 +58,6 @@ public class DashAppConfig extends ResourceConfig {
             service.start();
         }
 
-        PersistentInit(){
-
-        }
+        PersistentInit(){}
     }
 }

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -152,7 +153,7 @@ public abstract class AbstractDAO<T> {
             return getEntityManager().createQuery(cq).getSingleResult();
         } catch (PersistenceException e) {
             //getEntityManager().getTransaction().rollback();
-            logger.warn("Unable to get single result for query: {}", cq.toString(), e);
+            logger.warn("Unable to get single result for query: {}", cq.getParameters().toString(), e);
             return null;
         }
     }
