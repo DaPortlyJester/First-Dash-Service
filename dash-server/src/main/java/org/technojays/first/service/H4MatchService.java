@@ -63,9 +63,10 @@ public class H4MatchService implements MatchService {
 
     @Override
     public List<Match> getByTeamAndEvent(Long teamId, Long eventId) {
-        Event event = eventDAO.find(eventId);
-        Team team = teamDAO.find(teamId);
-        return matchDAO.getByTeamAndEvent(team, event);
+//        Event event = eventDAO.find(eventId);
+//        Team team = teamDAO.find(teamId);
+//        return matchDAO.getByTeamAndEvent(team, event);
+        return null;
     }
 
     @Override

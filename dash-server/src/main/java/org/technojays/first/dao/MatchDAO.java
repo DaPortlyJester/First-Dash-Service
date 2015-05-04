@@ -142,6 +142,7 @@ public class MatchDAO extends AbstractDAO<Match> {
      * @param event Event associated with all matches
      * @return Matches with the given team and even
      */
+    /**
     public List<Match> getByTeamAndEvent(Team team, Event event) {
         QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
 
@@ -150,6 +151,6 @@ public class MatchDAO extends AbstractDAO<Match> {
         qc.getCriteriaQuery().where(qc.getCriteriaBuilder().and(eventCondition, teamCondition));
 
         return getResultList(qc.getCriteriaQuery());
-    }
+    }**/
 
 }
