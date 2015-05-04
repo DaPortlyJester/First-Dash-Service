@@ -24,19 +24,22 @@ public class DashGuiceH4ServletModule extends ServletModule {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // Thread Local here for one entity
-    private static final ThreadLocal<EntityManager> ENTITY_MANAGER_CACHE = new ThreadLocal<>();
+//    private static final ThreadLocal<EntityManager> ENTITY_MANAGER_CACHE = new ThreadLocal<>();
 
     private static Properties h4Properties;
 
     protected void configureServlets() {
         h4Properties = new Properties();
         String configFile = System.getProperty(FDC.DASH_H4_CONFIG_FILE);
+        logger.info("Building Persistence Manager - Servlet Persistence");
         JpaPersistModule persistModule = new JpaPersistModule(FDC.H4_MANAGER);
         persistModule.properties(ConfigUtil.loadConfig(h4Properties, configFile));
+        logger.info("Installing Persistence Manager for filter {}", FDC.PERSISTENCE_FILTER);
         install(persistModule);
-        filter("/*").through(PersistFilter.class);
+        filter(FDC.PERSISTENCE_FILTER).through(PersistFilter.class);
     }
 
+    /**
     @Provides
     @Inject
     public EntityManagerFactory entityManagerFactory() {
@@ -51,5 +54,5 @@ public class DashGuiceH4ServletModule extends ServletModule {
             ENTITY_MANAGER_CACHE.set(entityManager = entityManagerFactory.createEntityManager());
         }
         return entityManager;
-    }
+    } **/
 }

@@ -9,8 +9,9 @@ import java.io.Serializable;
  *
  * Entity for correlating match, team and ally information for a given match
  */
+/*, indexes = {@Index(columnList = "id")}*/
 @Entity
-@Table(name = "allies", schema = "first"/*, indexes = {@Index(columnList = "id")}*/)
+@Table(name = "allies", schema = "first")
 public class Ally implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

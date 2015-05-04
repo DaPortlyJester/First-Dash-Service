@@ -146,7 +146,7 @@ public class MatchDAO extends AbstractDAO<Match> {
         QueryContainer<Match> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
 
         Predicate eventCondition = qc.getCriteriaBuilder().equal(qc.getRoot().get(Match_.event), event);
-        Predicate teamCondition = qc.getCriteriaBuilder().isMember(team, qc.getRoot().get(Match_.teams));
+        Predicate teamCondition = qc.getCriteriaBuilder().equal(team, qc.getRoot().get(Match_.allies));
         qc.getCriteriaQuery().where(qc.getCriteriaBuilder().and(eventCondition, teamCondition));
 
         return getResultList(qc.getCriteriaQuery());

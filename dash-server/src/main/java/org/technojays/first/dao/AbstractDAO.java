@@ -5,6 +5,7 @@ import com.google.inject.persist.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Provider;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
@@ -29,8 +30,11 @@ public abstract class AbstractDAO<T> {
     protected Class<T> entityClass;
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    //@Inject
+    //private EntityManager em;
+
     @Inject
-    private EntityManager em;
+    private Provider<EntityManager> entityManagerProvider;
 
     public AbstractDAO(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -42,7 +46,7 @@ public abstract class AbstractDAO<T> {
      * @return Entity Manager associated with this DAO
      */
     protected EntityManager getEntityManager() {
-        return em;
+        return entityManagerProvider.get();
     }
 
     /**
@@ -56,33 +60,33 @@ public abstract class AbstractDAO<T> {
 
     @Transactional
     public void save(T entity) {
-        getEntityManager().getTransaction().begin();
+//        getEntityManager().getTransaction().begin();
         getEntityManager().persist(entity);
-        getEntityManager().getTransaction().commit();
+//        getEntityManager().getTransaction().commit();
     }
 
     @Transactional
     public void update(T entity) {
-        getEntityManager().getTransaction().begin();
+//        getEntityManager().getTransaction().begin();
         getEntityManager().merge(entity);
-        getEntityManager().getTransaction().commit();
+//        getEntityManager().getTransaction().commit();
     }
 
     @Transactional
     public void remove(Long entityId) {
-        getEntityManager().getTransaction().begin();
+//        getEntityManager().getTransaction().begin();
         T entity = find(entityId);
 
         if (entity != null)
             remove(entity);
-        getEntityManager().getTransaction().commit();
+//        getEntityManager().getTransaction().commit();
     }
 
     @Transactional
     public void remove(T entity) {
-        getEntityManager().getTransaction().begin();
+//        getEntityManager().getTransaction().begin();
         getEntityManager().remove(getEntityManager().merge(entity));
-        getEntityManager().getTransaction().commit();
+//        getEntityManager().getTransaction().commit();
     }
 
     /**

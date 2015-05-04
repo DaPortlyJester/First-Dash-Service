@@ -1,11 +1,14 @@
 package org.technojays.first.dao;
 
+import com.google.inject.persist.PersistService;
 import org.jukito.JukitoRunner;
 import org.jukito.UseModules;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.technojays.first.inject.ConfigurationInjection;
 import org.technojays.first.inject.DashGuiceH4Module;
+import org.technojays.first.inject.DashGuiceH4ServletModule;
+import org.technojays.first.inject.PersistenceInit;
 import org.technojays.first.model.*;
 
 import java.time.ZonedDateTime;
@@ -16,11 +19,13 @@ import java.util.Set;
 import static org.junit.Assert.*;
 
 @RunWith(JukitoRunner.class)
-@UseModules({ConfigurationInjection.class, DashGuiceH4Module.class})
+//@UseModules({ConfigurationInjection.class, DashGuiceH4Module.class})
 public class MatchDAOTest {
 
     @Test
-    public void testGetByMatchNumber(MatchDAO matchDAO) throws Exception {
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void testGetByMatchNumber(PersistService persistService, MatchDAO matchDAO) throws Exception {
+        PersistenceInit persistenceInit = new PersistenceInit(persistService);
         long matchNum = 100l;
         Match testMatch = buildMatch();
         testMatch.setMatchNum(matchNum);

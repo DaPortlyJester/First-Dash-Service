@@ -1,11 +1,16 @@
 package org.technojays.first.dao;
 
+import com.google.inject.persist.PersistService;
 import org.jukito.JukitoRunner;
 import org.jukito.UseModules;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.technojays.first.DashAppConfig;
 import org.technojays.first.inject.ConfigurationInjection;
 import org.technojays.first.inject.DashGuiceH4Module;
+import org.technojays.first.inject.DashGuiceH4ServletModule;
+import org.technojays.first.inject.PersistenceInit;
 import org.technojays.first.model.Team;
 
 import java.util.List;
@@ -13,11 +18,19 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(JukitoRunner.class)
-@UseModules({ConfigurationInjection.class, DashGuiceH4Module.class})
+// ConfigurationInjection.class,
 public class TeamDAOTest {
 
+   /**@Before
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void setup(PersistService persistService){
+        PersistenceInit persistenceInit = new PersistenceInit(persistService);
+    }**/
+
     @Test
-    public void testGetByTeamNumber(TeamDAO teamDAO) throws Exception {
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void testGetByTeamNumber(PersistService persistService, TeamDAO teamDAO) throws Exception {
+        PersistenceInit persistenceInit = new PersistenceInit(persistService);
         long testTeamNum = 50L;
         Team team = teamDAO.getByTeamNumber(testTeamNum);
         assertNull(team);
@@ -30,7 +43,9 @@ public class TeamDAOTest {
     }
 
     @Test
-    public void testGetByTeamName(TeamDAO teamDAO) throws Exception {
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void testGetByTeamName(PersistService persistService, TeamDAO teamDAO) throws Exception {
+        PersistenceInit persistenceInit = new PersistenceInit(persistService);
         long testTeamNum = 100l;
         String testTeamName = "TestName";
         Team testTeam = buildTestTeam(testTeamNum, testTeamName);
@@ -46,7 +61,9 @@ public class TeamDAOTest {
     }
 
     @Test
-    public void testGetByShortName(TeamDAO teamDAO) throws Exception {
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void testGetByShortName(PersistService persistService, TeamDAO teamDAO) throws Exception {
+        PersistenceInit persistenceInit = new PersistenceInit(persistService);
         long testTeamNum = 25l;
         String testTeamName = "TestName";
         String testShortName = "Test Short Name";

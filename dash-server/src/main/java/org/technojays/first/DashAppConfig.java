@@ -41,7 +41,8 @@ public class DashAppConfig extends ResourceConfig {
                 new JSONInjection()
         );
 
-        PersistentInit persistenceInit = new PersistentInit();
+//        PersistentInit persistenceInit = new PersistentInit();
+        PersistenceInit persistenceInit = new PersistenceInit();
 
         GuiceBridge.getGuiceBridge().initializeGuiceBridge(serviceLocator);
         GuiceIntoHK2Bridge guiceBridge = serviceLocator.getService(GuiceIntoHK2Bridge.class);
@@ -49,7 +50,7 @@ public class DashAppConfig extends ResourceConfig {
     }
 
     /**
-     * Initialize Persistence Servoce
+     * Initialize Persistence Service
      */
     public class PersistentInit {
 
