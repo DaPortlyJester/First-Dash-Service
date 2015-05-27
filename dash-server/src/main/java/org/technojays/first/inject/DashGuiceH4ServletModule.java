@@ -2,7 +2,9 @@ package org.technojays.first.inject;
 
 import com.google.inject.Inject;
 import com.google.inject.Provides;
+import com.google.inject.Singleton;
 import com.google.inject.persist.PersistFilter;
+import com.google.inject.persist.PersistService;
 import com.google.inject.persist.jpa.JpaPersistModule;
 import com.google.inject.servlet.ServletModule;
 import org.slf4j.Logger;
@@ -37,6 +39,13 @@ public class DashGuiceH4ServletModule extends ServletModule {
         logger.info("Installing Persistence Manager for filter {}", FDC.PERSISTENCE_FILTER);
         install(persistModule);
         filter(FDC.PERSISTENCE_FILTER).through(PersistFilter.class);
+    }
+
+    @Singleton
+    @Provides
+    @Inject
+    public PersistenceInit initPersistence(PersistService persistService) {
+        return new PersistenceInit(persistService);
     }
 
     /**

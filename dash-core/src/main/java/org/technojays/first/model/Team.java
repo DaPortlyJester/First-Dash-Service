@@ -28,12 +28,12 @@ public class Team {
     @Column(name = "short_name")
     private String shortName;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "allies", schema = "first",
             joinColumns = {@JoinColumn(name = "team_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "match_id", referencedColumnName = "id")})
-    private Set<Match> matches;
+    private Set<Match> matches;*/
 
     public Long getId() {
         return id;
@@ -67,13 +67,13 @@ public class Team {
         this.shortName = shortName;
     }
 
-    public Set<Match> getMatches() {
+/*    public Set<Match> getMatches() {
         return matches;
     }
 
     public void setMatches(Set<Match> matches) {
         this.matches = matches;
-    }
+    }*/
 
     /**
      * Returns a hash code value for the object. This method is

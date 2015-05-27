@@ -35,13 +35,13 @@ public class Match {
     @Column(name = "type")
     private MatchType type;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+/*    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id", referencedColumnName = "id")
     private Set<Ally> allies;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id")
-    private Set<MatchScore> scores;
+    private Set<MatchScore> scores;*/
 
     public Long getId() {
         return id;
@@ -91,7 +91,7 @@ public class Match {
         this.type = type;
     }
 
-    public Set<Ally> getAllies() {
+/*    public Set<Ally> getAllies() {
         return allies;
     }
 
@@ -105,5 +105,5 @@ public class Match {
 
     public void setScores(Set<MatchScore> scores) {
         this.scores = scores;
-    }
+    }*/
 }

@@ -3,95 +3,142 @@ package org.technojays.first.dao;
 import com.google.inject.persist.PersistService;
 import org.jukito.JukitoRunner;
 import org.jukito.UseModules;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.technojays.first.inject.ConfigurationInjection;
-import org.technojays.first.inject.DashGuiceH4Module;
 import org.technojays.first.inject.DashGuiceH4ServletModule;
 import org.technojays.first.inject.PersistenceInit;
 import org.technojays.first.model.*;
 
 import java.time.ZonedDateTime;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.Assert.*;
 
 @RunWith(JukitoRunner.class)
-//@UseModules({ConfigurationInjection.class, DashGuiceH4Module.class})
-public class MatchDAOTest {
+public class MatchDAOTest extends DAOTest {
+
+    public static final long MATCH_NUM = 100l;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     @UseModules({DashGuiceH4ServletModule.class})
-    public void testGetByMatchNumber(PersistService persistService, MatchDAO matchDAO) throws Exception {
-        PersistenceInit persistenceInit = new PersistenceInit(persistService);
-        long matchNum = 100l;
-        Match testMatch = buildMatch();
-        testMatch.setMatchNum(matchNum);
-        List<Match> matches = matchDAO.getByMatchNumber(matchNum);
+    public void testGetByMatchNumber(PersistenceInit persistenceInit, MatchDAO matchDAO) throws Exception {
+        Match testMatch = buildTestMatch();
+        testMatch.setMatchNum(MATCH_NUM);
+        List<Match> matches = matchDAO.getByMatchNumber(MATCH_NUM);
         assertNotNull(matches);
         assertTrue(matches.isEmpty());
         matchDAO.save(testMatch);
-        matches = matchDAO.getByMatchNumber(matchNum);
+        matches = matchDAO.getByMatchNumber(MATCH_NUM);
         for(Match m: matches) {
             assertEquals(m, testMatch);
+            matchDAO.remove(m);
         }
     }
 
     @Test
-    public void testGetByMatchNumberAndEvent() throws Exception {
-
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void testGetByMatchNumberAndEvent(PersistenceInit persistenceInit, MatchDAO matchDAO) throws Exception {
+        Match testMatch = buildTestMatch();
+        testMatch.setMatchNum(MATCH_NUM);
+        Match match = matchDAO.getByMatchNumberAndEvent(MATCH_NUM, testMatch.getEvent().getId());
+        assertNull(match);
+        matchDAO.save(testMatch);
+        match = matchDAO.getByMatchNumberAndEvent(MATCH_NUM, testMatch.getEvent().getId());
+        assertEquals(match, testMatch);
+        matchDAO.remove(match);
     }
 
     @Test
-    public void testGetAfterDate() throws Exception {
-
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void testGetAfterDate(PersistenceInit persistenceInit, MatchDAO matchDAO) throws Exception {
+        Match testMatch = buildTestMatch();
+        List<Match> matches = matchDAO.getAfterDate(testMatch.getStart().minusHours(1));
+        assertNotNull(matches);
+        assertTrue(matches.isEmpty());
+        matchDAO.save(testMatch);
+        matches = matchDAO.getAfterDate(testMatch.getStart().minusHours(1));
+        assertNotNull(matches);
+        assertFalse(matches.isEmpty());
+        assertTrue(matches.contains(testMatch) && matches.size() == 1);
+        matches.forEach(match -> matchDAO.remove(match));
     }
 
     @Test
-    public void testGetBetweenDates() throws Exception {
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void testGetBetweenDates(PersistenceInit persistenceInit, MatchDAO matchDAO) throws Exception {
+        Match testMatch = buildTestMatch();
+        List<Match> matches = matchDAO.getBetweenDates(testMatch.getStart().minusHours(1),
+                testMatch.getStart().plusHours(1));
+        assertNotNull(matches);
+        assertTrue(matches.isEmpty());
+        matchDAO.save(testMatch);
+        matches = matchDAO.getBetweenDates(testMatch.getStart().minusHours(1), testMatch.getStart().plusHours(1));
+        assertNotNull(matches);
+        assertFalse(matches.isEmpty());
+        assertTrue(matches.contains(testMatch) && matches.size() == 1);
 
+        // Parallel stream offers no performance improvement iterating over linked lists
+        // Actually can cause performance loss
+        matches.parallelStream().forEach(match -> matchDAO.remove(match));
     }
 
     @Test
-    public void testGetForEvent() throws Exception {
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void testGetForEvent(PersistenceInit persistenceInit, MatchDAO matchDAO, EventDAO eventDAO)
+            throws Exception {
+        Match testMatch = buildTestMatch();
+        testMatch.setMatchNum(MATCH_NUM);
+        Event event = testMatch.getEvent();
+        eventDAO.save(event);
+        testMatch.setEvent(event);
 
+        List<Match> matches = matchDAO.getForEvent(event);
+        assertNotNull(matches);
+        assertTrue(matches.isEmpty());
+
+        matchDAO.save(testMatch);
+        matches = matchDAO.getForEvent(event);
+        assertNotNull(matches);
+        assertTrue(matches.contains(testMatch) && matches.size() == 1);
+
+        eventDAO.remove(event);
+        matches.forEach(match -> matchDAO.remove(match));
     }
 
     @Test
+    @UseModules({DashGuiceH4ServletModule.class})
+    public void transientEventIllegalState(PersistenceInit persistenceInit, MatchDAO matchDAO) throws Exception {
+        Match testMatch = buildTestMatch();
+        testMatch.setMatchNum(MATCH_NUM);
+        Event event = testMatch.getEvent();
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("save the transient instance before flushing: org.technojays.first.model.Event");
+        List<Match> matches = matchDAO.getForEvent(event);
+    }
+
+    @Test
+    @UseModules({DashGuiceH4ServletModule.class})
     public void testGetByType() throws Exception {
 
     }
 
     @Test
+    @UseModules({DashGuiceH4ServletModule.class})
     public void testGetByEventAndType() throws Exception {
 
     }
 
     @Test
+    @UseModules({DashGuiceH4ServletModule.class})
     public void testGetByTeamAndEvent() throws Exception {
 
     }
 
-    private Match buildMatch() {
-        Match match = new Match();
-        match.setMatchNum(10l);
-        Game game = new Game();
-        match.setGame(game);
-        Event event = new Event();
-        match.setStart(ZonedDateTime.now());
-        match.setType(MatchType.QUALIFYING);
-        Ally ally = new Ally();
-        Set<Ally> allies = new HashSet<>();
-        allies.add(ally);
-        MatchScore matchScore = new MatchScore();
-        matchScore.setMatch(match);
-        matchScore.setScore(100l);
-        matchScore.setType(ScoreType.TELEOP);
-        Set<MatchScore> scores = new HashSet<>();
-        scores.add(matchScore);
 
-        return match;
-    }
 }
