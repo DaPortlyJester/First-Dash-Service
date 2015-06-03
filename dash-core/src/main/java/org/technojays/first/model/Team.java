@@ -134,8 +134,11 @@ public class Team {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
-        sb.append(": ").append(this.getId()).append(": ").append(this.getShortName()).append(": ")
-                .append(this.getName()).append(": ").append(this.getTeamNum());
+        sb.append(": ")
+                .append(this.getId()).append(": ")
+                .append(this.getShortName()).append(": ")
+                .append(this.getName()).append(": ")
+                .append(this.getTeamNum());
         return sb.toString();
     }
 }

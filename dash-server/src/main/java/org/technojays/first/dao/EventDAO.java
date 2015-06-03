@@ -31,7 +31,4 @@ public class EventDAO extends AbstractDAO<Event> {
         return getResultList(qc.getCriteriaQuery());
     }
 
-
-
-
 }

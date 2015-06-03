@@ -13,12 +13,17 @@ import java.util.Set;
  */
 public abstract class DAOTest {
 
+    protected long testTeamId;
+    protected long testMatchId;
+    protected long testEventId;
+    protected long testGameId;
+
     public long TEST_TEAM_NUM = 10l;
     public long TEST_ID = 10l;
     public long TEST_MATCH_NUM = 10l;
 
 
-    public Match buildTestMatch() {
+    public Match buildTestMatch(MatchDAO matchDAO, boolean save) {
         Match match = new Match();
         match.setMatchNum(TEST_MATCH_NUM);
 
@@ -40,7 +45,7 @@ public abstract class DAOTest {
         Set<MatchScore> scores = new HashSet<>();
         scores.add(matchScore);
         match.setScores(scores);*/
-
+        if(save) { matchDAO.save(match); }
         return match;
     }
 

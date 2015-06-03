@@ -15,17 +15,23 @@ public class PersistenceInit {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    PersistService persistService;
+    private PersistService persistService;
 
     @Inject
     public PersistenceInit(PersistService service) {
         logger.info("Starting persistence service");
-        service.start();
+        this.persistService = service;
+        persistService.start();
     }
 
     public PersistenceInit(){
         logger.info("Starting persistence service - Empty Constructor");
         persistService.start();
     }
+
+    public PersistService getPersistService() {
+        return persistService;
+    }
+
 
 }
