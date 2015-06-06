@@ -35,11 +35,11 @@ public class Match {
     @Column(name = "type")
     private MatchType type;
 
-/*    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+/*    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id", referencedColumnName = "id")
     private Set<Ally> allies;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "match_id")
     private Set<MatchScore> scores;*/
 

@@ -185,7 +185,7 @@ public abstract class AbstractDAO<T> {
      * @param value         String value of the model to search by
      * @return List of results for the attribute value
      */
-    public <V> List<T> getListByStringAttribute(SingularAttribute<T, String> metaAttribute, String value) {
+    public List<T> getListByStringAttribute(SingularAttribute<T, String> metaAttribute, String value) {
         QueryContainer<T> qc = new QueryContainer<>(getEntityManager(), this.entityClass);
 
         Predicate condition = qc.getCriteriaBuilder().like(qc.getRoot().get(metaAttribute), addLikeFilter(value));

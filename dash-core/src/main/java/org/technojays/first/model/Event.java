@@ -28,15 +28,6 @@ public class Event {
     @Column(name = "venue")
     private String venue;
 
-    @Column(name = "location")
-    private String location;
-
-    @Column(name = "start_time")
-    private ZonedDateTime startDate;
-
-    @Column(name = "end_time")
-    private ZonedDateTime endDate;
-
     @Column(name = "code")
     private String eventCode;
 
