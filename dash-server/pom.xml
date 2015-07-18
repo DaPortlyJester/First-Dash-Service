@@ -91,6 +91,23 @@
             <version>${hibernate.search.version}</version>
         </dependency>
 
+        <!-- jOOQ SQL Framework support (bye bye hibernate) -->
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-meta</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+
         <!-- Include core of dash, should include library to algorithmically calculate competition standings and
          base models of FIRST business logic-->
         <dependency>
