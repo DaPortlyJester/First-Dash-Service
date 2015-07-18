@@ -1,4 +1,8 @@
 # First Dash Entity Models
+Description of the entity models for first dash.
+
+All entities below are expected to be maintained in first_dash schema.
+All types should be implemented by hstore key-value pairs
 
 ## Entities
 *Alliance Type*<br />
@@ -42,10 +46,10 @@ Relationship between a match and a group of allies
     - foreign key ( alliance type short name? )
 - match_id: system id for the associated match
     - integer
-    - foreign key (match)
+    - foreign key (match) TODO
 - ally_ref: ally->alliance reference for all teams that were a part of this alliance (sha-1 from team numbers)
     - varchar
-    - indexed
+    - indexed  TODO
 
 ### Allies
 Relationship between a set of teams for an alliance
@@ -96,6 +100,7 @@ Awards presented at an event or competition to a team or person
     
 ### Awardees
 Person / People who received an award
+HStore key-value
 - id: system id for awardee
     - integer
     - primary key
@@ -103,6 +108,13 @@ Person / People who received an award
     - varchar
 - last_name:
     - varchar
+
+### Award Types
+Types of awards for events and competitions
+#### Fields
+- id: system id for this award type
+- info: key-value award info store
+
 
 ### Competitions
 A competition describes a Location, Game, and is held at an Event
@@ -122,6 +134,19 @@ A competition describes a Location, Game, and is held at an Event
 - game_id: game system id
     - integer
     - foreign key
+- start_time: start time of this competition
+    - timestamp
+- end_time: end time of this competition
+    - timestamp
+
+### Competition Types
+Types of competitions
+#### Fields
+- id: system id for this event
+    - integer
+    - primary key
+- info: info about this competition type
+    - hstore
 
 ### Events
 An event describes the timeframe for competitions and celebrations that are managed together
@@ -140,6 +165,7 @@ An event describes the timeframe for competitions and celebrations that are mana
 ### Games
 A game describes a specific set of rules and competitions for a program and its teams. It has a period of time 
 associated with it.
+HStore Key-Value
 #### Fields
 - id: system id for this game
     - integer
@@ -183,6 +209,10 @@ Describe a match where teams competed against each other
 - competition_id: competition system id
     - integer
     - indexed (with match_number)
+- start_time: expected match start time
+    - timestamp
+- end_time: expected match end time
+    - timestamp
 
 ### Match Scores
 Scores associated with a match
@@ -202,7 +232,7 @@ Scores associated with a match
 - value: score value
     - varchar
     
-### Match Score Types
+### Score Types
 Types of scores associated with matches
 #### Fields
 - id: system id for this score type
@@ -214,7 +244,7 @@ Types of scores associated with matches
     - varchar
 
 ### Programs
-A program is a sub-organization of FIRST that describes the type of games that will be played and the 
+A program is a sub-organization of FIRST that describes the type of games that will be played and the
 types of participants.
 #### Fields
 - id: system id for this program
@@ -259,6 +289,7 @@ A team associated with a specific FIRST program
 
 ### Team Attributes
 Attributes associated with a FIRST team
+(Thinking this should be implemented as an hstore key value combination of team system id with value of all attributes)
 #### Fields
 - id: system id for this attribute
     - integer
@@ -272,6 +303,39 @@ Attributes associated with a FIRST team
 - value: value for this attribute
     - varchar
 
+### Team Scores
+Scores associated with a FIRST team during a match at a competition
+#### Fields
+- id: system id for this score
+    - integer
+    - primary key
+- team_id: system id for the associated team
+    - integer
+    - foreign key
+- match_id: system id for the associated match
+    - integer
+    - foreign key
+- score_type_id: system id for the associated score type
+    - integer
+    - foreign key
+- value: score value
+    - varchar
+
+### Team Sponsors
+Sponsors associated with a FIRST team for a given game (season)
+#### Fields
+- id: system id for this team sponsor
+    - integer
+    - primary key
+- team_id: system id for the associated
+    - integer
+    - foreign key
+- sponsor_id: system id for the associated sponsor
+    - integer
+    - foreign key
+- game_id: system id for the associated game
+    - integer
+    - foreign key
 
 ### Users / Members
 TBD
