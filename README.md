@@ -14,11 +14,12 @@ FIRST Robotics Competition Dash Service
 - Jersey
 - Google Guice / Guice Persist
 - Jackson (JSON)
-- Hibernate 4
+- Hibernate 4 [ Deprecated ]
+- jOOQ
 - Jukito Testing Framework
 
 ### Setup
-- Build Postgres Database - [TODO: Include Vagarant Build To Support Dash Development]
+- Build Postgres Database - [TODO: Include Vagarant/CFEngine/Docker Build To Support Dash Development]
   - Database: first_dash, configured in H4 properties]
   - Schema: first
     - Must be created for database
