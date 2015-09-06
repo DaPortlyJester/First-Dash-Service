@@ -9,6 +9,7 @@ import javax.persistence.criteria.Root;
 /**
  * @author Derelle.Redmond
  * @since 2/10/2015.
+ * @deprecated H4 DAO replaced by jOOQ 9/6/2015
  *
  * Container for highly related query objects
  */

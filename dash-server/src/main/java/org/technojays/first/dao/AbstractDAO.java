@@ -23,6 +23,7 @@ import java.util.Map;
 /**
  * @author Derelle.Redmond
  * @since 2/9/2015
+ * @deprecated H4 DAO replaced by jOOQ 9/6/2015
  * <p/>
  * Abstract DAO for all Entity types to implement
  */

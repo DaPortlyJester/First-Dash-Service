@@ -24,6 +24,7 @@ import java.util.Properties;
 /**
  * @author Derelle.Redmond
  * @since 2/1/2015.
+ * @deprecated Replaced by jOOQ 9/6/2015
  * <p/>
  * Guice Configuration / Injection for Hibernate for Service
  */

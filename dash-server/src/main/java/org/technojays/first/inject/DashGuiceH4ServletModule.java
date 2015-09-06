@@ -20,6 +20,7 @@ import java.util.Properties;
 /**
  * @author Derelle.Redmond
  * @since 2/7/2015.
+ * @deprecated Replaced by jOOQ module 9/6/2015
  */
 public class DashGuiceH4ServletModule extends ServletModule {
 

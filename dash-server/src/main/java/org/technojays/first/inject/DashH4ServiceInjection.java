@@ -14,6 +14,7 @@ import org.technojays.first.service.TeamService;
 /**
  * @author DaPortlyJester
  * @since 5/3/2015
+ * @deprecated Replaced by jOOQ 9/6/2015
  */
 public class DashH4ServiceInjection implements Module {
 

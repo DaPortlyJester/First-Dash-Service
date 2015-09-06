@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author Derelle.Redmond
  * @since 2/9/2015.
+ * @deprecated H4 DAO replaced by jOOQ 9/6/2015
  * <p/>
  * Data Access Object for Match Entities
  */
