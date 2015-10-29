@@ -25,9 +25,6 @@ public class Event {
     @Column(name = "type")
     private EventType type;
 
-    @Column(name = "venue")
-    private String venue;
-
     @Column(name = "code")
     private String eventCode;
 
@@ -53,38 +50,6 @@ public class Event {
 
     public void setType(EventType type) {
         this.type = type;
-    }
-
-    public String getVenue() {
-        return venue;
-    }
-
-    public void setVenue(String venue) {
-        this.venue = venue;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public ZonedDateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(ZonedDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public ZonedDateTime getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(ZonedDateTime endDate) {
-        this.endDate = endDate;
     }
 
     public String getEventCode() {
