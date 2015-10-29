@@ -31,4 +31,7 @@ FIRST Robotics Competition Dash Service
     - /etc/dash/application.properties
   - Properties can be configured through system environment properties. Property file variables should be empty
 
+### jOOQ Generation
+To generate the FIRST Dash Objects from the Database, simply edit the dash-server pom.xml with the appropriate
+credentials and database configuration details (assuming postgres).
 

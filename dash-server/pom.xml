@@ -30,7 +30,7 @@
             <version>${hk2.version}</version>
         </dependency>
 
-        <!-- Guice persist for Hibernate Integration and Guice Servlet for servlet integration -->
+        <!-- Guice persist for DAO Layer integration and Guice Servlet for servlet integration -->
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-persist</artifactId>
@@ -176,6 +176,8 @@
                     <target>${targetJdk}</target>
                 </configuration>
             </plugin>
+
+            <!-- Manages dependencies for running simply locally-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -192,6 +194,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Maven Jetty Plugin for running in project using jetty-->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -205,6 +209,67 @@
                     <war>${project.build.directory}/${project.build.finalName}.war</war>
                 </configuration>
             </plugin>
+
+            <!-- jOOQ Maven configuration for code generation as part of maven -->
+            <plugin>
+                <!-- Specify the maven code generator plugin -->
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <version>${jooq.version}</version>
+
+                <!-- The plugin should hook into the generate goal -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <!-- Manage the plugin's dependency. In this example, we'll use a PostgreSQL database -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>${postgres.version}</version>
+                    </dependency>
+                </dependencies>
+
+                <!-- Specify the plugin configuration.
+                     The configuration format is the same as for the standalone code generator -->
+                <configuration>
+
+                    <!-- JDBC connection parameters -->
+                    <jdbc>
+                        <driver>org.postgresql.Driver</driver>
+                        <url>jdbc:postgresql:first_dash</url>
+                        <user>postgres</user>
+                        <password>Dred_0108</password>
+                    </jdbc>
+
+                    <!-- Generator parameters -->
+                    <generator>
+                        <database>
+                            <name>org.jooq.util.postgres.PostgresDatabase</name>
+                            <includes>.*</includes>
+                            <excludes></excludes>
+                            <inputSchema>first</inputSchema>
+                        </database>
+                        <target>
+                            <packageName>org.technojays.jooq</packageName>
+                            <directory>target/generated-sources/jooq</directory>
+                        </target>
+                        <generate>
+                            <fluentSetters>true</fluentSetters>
+                            <pojos>true</pojos>
+                            <daos>true</daos>
+                            <interfaces>true</interfaces>
+                            <jpaAnnotations>true</jpaAnnotations>
+                        </generate>
+                    </generator>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
