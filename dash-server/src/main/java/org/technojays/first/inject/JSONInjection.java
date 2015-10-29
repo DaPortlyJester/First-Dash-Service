@@ -20,9 +20,7 @@ public class JSONInjection implements Module {
     @Singleton
     ObjectMapper objectMapper() {
         final ObjectMapper mapper = new ObjectMapper();
-        // Hibernate 4 Module handles lazy loading and other Hibernate stuffz
         mapper.writerWithDefaultPrettyPrinter();
-        mapper.registerModule(new Hibernate4Module());
         return mapper;
     }
 

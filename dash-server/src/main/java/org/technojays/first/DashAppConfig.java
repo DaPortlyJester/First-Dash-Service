@@ -35,9 +35,6 @@ public class DashAppConfig extends ResourceConfig {
         logger.info("Building Injectors");
         Injector injector = Guice.createInjector(
                 new ConfigurationInjection(),
-                new DashGuiceH4ServletModule(),
-                new DashH4ServiceInjection(),
-                //new DashGuiceH4Module(),
                 new JSONInjection()
         );
 
