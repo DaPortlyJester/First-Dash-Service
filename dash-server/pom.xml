@@ -263,8 +263,8 @@
                             <inputSchema>first</inputSchema>
                         </database>
                         <target>
-                            <packageName>org.technojays.jooq</packageName>
-                            <directory>target/generated-sources/jooq</directory>
+                            <packageName>org.technojays.first.jooq</packageName>
+                            <directory>src/main/java</directory>
                         </target>
                         <generate>
                             <fluentSetters>true</fluentSetters>

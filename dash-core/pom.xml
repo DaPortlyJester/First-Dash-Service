@@ -27,6 +27,23 @@
             <version>${guava.version}</version>
         </dependency>
 
+        <!-- jOOQ SQL Framework support (bye bye hibernate) -->
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-meta</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+
         <!-- Hibernate for annotations-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -117,7 +134,7 @@
                         <driver>org.postgresql.Driver</driver>
                         <url>jdbc:postgresql:first_dash</url>
                         <user>postgres</user>
-                        <password>Dred_0108</password>
+                        <password></password>
                     </jdbc>
 
                     <!-- Generator parameters -->
@@ -129,15 +146,15 @@
                             <inputSchema>first</inputSchema>
                         </database>
                         <target>
-                            <packageName>org.technojays.first.model</packageName>
+                            <packageName>org.technojays.first.jooq</packageName>
                             <directory>src/main/java</directory>
                         </target>
                         <generate>
                             <fluentSetters>true</fluentSetters>
                             <pojos>true</pojos>
                             <daos>false</daos>
-                            <interfaces>true</interfaces>
-                            <jpaAnnotations>true</jpaAnnotations>
+                            <interfaces>false</interfaces>
+                            <jpaAnnotations>false</jpaAnnotations>
                         </generate>
                     </generator>
                 </configuration>
