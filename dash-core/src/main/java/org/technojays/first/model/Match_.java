@@ -9,6 +9,7 @@ import java.time.ZonedDateTime;
 /**
  * @author Derelle.Redmond
  * @since 2/9/2015
+ * @deprecated H4 DAO, replaced by jOOQ 9/6/2015
  *
  * Hibernate metamodel for matches for criteria building
  */

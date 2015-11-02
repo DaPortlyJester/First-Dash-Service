@@ -31,7 +31,9 @@
         <hk2.version>2.3.0</hk2.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <jackson.version>2.5.4</jackson.version>
-        <jackson.hibernate.version>2.5.1</jackson.hibernate.version>
+        <jsonld.version>0.7.0</jsonld.version>
+        <!--Deprecated hibernate with jackson-->
+        <!--<jackson.hibernate.version>2.5.1</jackson.hibernate.version>-->
 
         <guice.version>4.0</guice.version>
         <guava.version>18.0</guava.version>

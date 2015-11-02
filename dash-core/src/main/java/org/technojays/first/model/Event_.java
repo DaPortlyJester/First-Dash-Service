@@ -10,6 +10,7 @@ import java.time.ZonedDateTime;
 /**
  * @author derelle.redmond
  * @since 2/14/15.
+ * @deprecated H4 DAO, replaced by jOOQ 9/6/2015
  */
 @StaticMetamodel(Event.class)
 public class Event_ {
