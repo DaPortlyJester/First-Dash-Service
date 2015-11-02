@@ -60,11 +60,14 @@
             <artifactId>jackson-module-guice</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+
+        <!-- JSON-LD Integration-->
         <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-hibernate4</artifactId>
-            <version>${jackson.hibernate.version}</version>
+            <groupId>com.github.jsonld-java</groupId>
+            <artifactId>jsonld-java</artifactId>
+            <version>${jsonld.version}</version>
         </dependency>
+
 
         <!-- uncomment this to have your face eaten by the evil moxy piranha villagers from
         the sahara oasis. This is suggested by Jersey, *unlike button*
