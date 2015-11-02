@@ -6,23 +6,23 @@ All types should be implemented by hstore key-value pairs
 
 ## Entities
 *Alliance Type*<br />
-*Alliances*<br />
-*Allies*<br />
-*Attribute Types*<br />
-*Awards*<br />
-*Awardees*<br />
-*Competitions*<br />
-*Events*<br />
-*Games*<br />
-*Locations*<br />
-*Matches*<br />
-*MatchScores*<br />
-*Programs*<br />
-*Sponsors*<br />
-*Teams*<br />
-*Team Attributes*<br />
-*Users / Members*<br />
-*Volunteers*<br />
+*Alliance*<br />
+*Ally*<br />
+*Attribute Type*<br />
+*Award*<br />
+*Awardee*<br />
+*Competition*<br />
+*Event*<br />
+*Game*<br />
+*Location*<br />
+*Match*<br />
+*Match Score*<br />
+*Program*<br />
+*Sponsor*<br />
+*Team*<br />
+*Team Attribute*<br />
+*Users / Member*<br />
+*Volunteer*<br />
 
 ### Alliance Type
 Type descriptor for an alliance (red, blue, etc)
