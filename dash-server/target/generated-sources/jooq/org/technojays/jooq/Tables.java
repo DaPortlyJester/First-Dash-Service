@@ -6,26 +6,26 @@ package org.technojays.jooq;
 
 import javax.annotation.Generated;
 
+import org.technojays.jooq.tables.Alliance;
 import org.technojays.jooq.tables.AllianceRef;
-import org.technojays.jooq.tables.AllianceTypes;
-import org.technojays.jooq.tables.Alliances;
-import org.technojays.jooq.tables.Allies;
-import org.technojays.jooq.tables.AttributeTypes;
+import org.technojays.jooq.tables.AllianceType;
+import org.technojays.jooq.tables.Ally;
+import org.technojays.jooq.tables.AttributeType;
+import org.technojays.jooq.tables.Award;
 import org.technojays.jooq.tables.AwardType;
-import org.technojays.jooq.tables.Awards;
-import org.technojays.jooq.tables.Competitions;
-import org.technojays.jooq.tables.Events;
-import org.technojays.jooq.tables.Games;
-import org.technojays.jooq.tables.Locations;
-import org.technojays.jooq.tables.MatchScores;
-import org.technojays.jooq.tables.Matches;
-import org.technojays.jooq.tables.Programs;
-import org.technojays.jooq.tables.ScoreTypes;
-import org.technojays.jooq.tables.Sponsors;
-import org.technojays.jooq.tables.TeamAttributes;
-import org.technojays.jooq.tables.TeamScores;
-import org.technojays.jooq.tables.TeamSponsors;
-import org.technojays.jooq.tables.Teams;
+import org.technojays.jooq.tables.Competition;
+import org.technojays.jooq.tables.Event;
+import org.technojays.jooq.tables.Game;
+import org.technojays.jooq.tables.Location;
+import org.technojays.jooq.tables.Match;
+import org.technojays.jooq.tables.MatchScore;
+import org.technojays.jooq.tables.Program;
+import org.technojays.jooq.tables.ScoreType;
+import org.technojays.jooq.tables.Sponsor;
+import org.technojays.jooq.tables.Team;
+import org.technojays.jooq.tables.TeamAttribute;
+import org.technojays.jooq.tables.TeamScore;
+import org.technojays.jooq.tables.TeamSponsor;
 
 
 /**
@@ -42,6 +42,11 @@ import org.technojays.jooq.tables.Teams;
 public class Tables {
 
 	/**
+	 * Relationship between a match and a group of allies
+	 */
+	public static final Alliance ALLIANCE = org.technojays.jooq.tables.Alliance.ALLIANCE;
+
+	/**
 	 * Alliance reference of hash generated from ordered list of teams
 	 */
 	public static final AllianceRef ALLIANCE_REF = org.technojays.jooq.tables.AllianceRef.ALLIANCE_REF;
@@ -49,22 +54,22 @@ public class Tables {
 	/**
 	 * Alliance types for FIRST programs
 	 */
-	public static final AllianceTypes ALLIANCE_TYPES = org.technojays.jooq.tables.AllianceTypes.ALLIANCE_TYPES;
-
-	/**
-	 * Relationship between a match and a group of allies
-	 */
-	public static final Alliances ALLIANCES = org.technojays.jooq.tables.Alliances.ALLIANCES;
+	public static final AllianceType ALLIANCE_TYPE = org.technojays.jooq.tables.AllianceType.ALLIANCE_TYPE;
 
 	/**
 	 * Relationship between a set of teams for an alliance
 	 */
-	public static final Allies ALLIES = org.technojays.jooq.tables.Allies.ALLIES;
+	public static final Ally ALLY = org.technojays.jooq.tables.Ally.ALLY;
 
 	/**
 	 * Attribute types in program
 	 */
-	public static final AttributeTypes ATTRIBUTE_TYPES = org.technojays.jooq.tables.AttributeTypes.ATTRIBUTE_TYPES;
+	public static final AttributeType ATTRIBUTE_TYPE = org.technojays.jooq.tables.AttributeType.ATTRIBUTE_TYPE;
+
+	/**
+	 * Awards awarded at competitions and events
+	 */
+	public static final Award AWARD = org.technojays.jooq.tables.Award.AWARD;
 
 	/**
 	 * Award types
@@ -72,78 +77,73 @@ public class Tables {
 	public static final AwardType AWARD_TYPE = org.technojays.jooq.tables.AwardType.AWARD_TYPE;
 
 	/**
-	 * Awards awarded at competitions and events
-	 */
-	public static final Awards AWARDS = org.technojays.jooq.tables.Awards.AWARDS;
-
-	/**
 	 * A competition describes a Location, Game, and is held at an Event
 	 */
-	public static final Competitions COMPETITIONS = org.technojays.jooq.tables.Competitions.COMPETITIONS;
+	public static final Competition COMPETITION = org.technojays.jooq.tables.Competition.COMPETITION;
 
 	/**
 	 * An event describes the timeframe for competitions and celebrations that are managed together
 
 	 */
-	public static final Events EVENTS = org.technojays.jooq.tables.Events.EVENTS;
+	public static final Event EVENT = org.technojays.jooq.tables.Event.EVENT;
 
 	/**
 	 * A game describes a specific set of rules and competitions for a program and its teams. It has a period of time 
 associated with it.
 	 */
-	public static final Games GAMES = org.technojays.jooq.tables.Games.GAMES;
+	public static final Game GAME = org.technojays.jooq.tables.Game.GAME;
 
 	/**
 	 * Locations for program
 	 */
-	public static final Locations LOCATIONS = org.technojays.jooq.tables.Locations.LOCATIONS;
-
-	/**
-	 * Scores associated with a match
-	 */
-	public static final MatchScores MATCH_SCORES = org.technojays.jooq.tables.MatchScores.MATCH_SCORES;
+	public static final Location LOCATION = org.technojays.jooq.tables.Location.LOCATION;
 
 	/**
 	 * Describe a match where teams competed against each other
 
 	 */
-	public static final Matches MATCHES = org.technojays.jooq.tables.Matches.MATCHES;
+	public static final Match MATCH = org.technojays.jooq.tables.Match.MATCH;
+
+	/**
+	 * Scores associated with a match
+	 */
+	public static final MatchScore MATCH_SCORE = org.technojays.jooq.tables.MatchScore.MATCH_SCORE;
 
 	/**
 	 * A program is a sub-organization of FIRST that describes the type of games that will be played and the 
 types of participants.
 	 */
-	public static final Programs PROGRAMS = org.technojays.jooq.tables.Programs.PROGRAMS;
+	public static final Program PROGRAM = org.technojays.jooq.tables.Program.PROGRAM;
 
 	/**
 	 * Types of scores associated with matches
 	 */
-	public static final ScoreTypes SCORE_TYPES = org.technojays.jooq.tables.ScoreTypes.SCORE_TYPES;
+	public static final ScoreType SCORE_TYPE = org.technojays.jooq.tables.ScoreType.SCORE_TYPE;
 
 	/**
 	 * Sponsors for teams, events, groups, programs, etc
 
 	 */
-	public static final Sponsors SPONSORS = org.technojays.jooq.tables.Sponsors.SPONSORS;
+	public static final Sponsor SPONSOR = org.technojays.jooq.tables.Sponsor.SPONSOR;
+
+	/**
+	 * A team associated with a specific FIRST program
+	 */
+	public static final Team TEAM = org.technojays.jooq.tables.Team.TEAM;
 
 	/**
 	 * Attributes associated with a FIRST team
 	 */
-	public static final TeamAttributes TEAM_ATTRIBUTES = org.technojays.jooq.tables.TeamAttributes.TEAM_ATTRIBUTES;
+	public static final TeamAttribute TEAM_ATTRIBUTE = org.technojays.jooq.tables.TeamAttribute.TEAM_ATTRIBUTE;
 
 	/**
 	 * Scores associated with a FIRST team during a match at a competition
 
 	 */
-	public static final TeamScores TEAM_SCORES = org.technojays.jooq.tables.TeamScores.TEAM_SCORES;
+	public static final TeamScore TEAM_SCORE = org.technojays.jooq.tables.TeamScore.TEAM_SCORE;
 
 	/**
 	 * Sponsors associated with a FIRST team for a given game (season)
 	 */
-	public static final TeamSponsors TEAM_SPONSORS = org.technojays.jooq.tables.TeamSponsors.TEAM_SPONSORS;
-
-	/**
-	 * A team associated with a specific FIRST program
-	 */
-	public static final Teams TEAMS = org.technojays.jooq.tables.Teams.TEAMS;
+	public static final TeamSponsor TEAM_SPONSOR = org.technojays.jooq.tables.TeamSponsor.TEAM_SPONSOR;
 }

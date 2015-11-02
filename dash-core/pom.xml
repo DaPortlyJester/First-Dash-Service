@@ -77,4 +77,72 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <!-- jOOQ Maven configuration for code generation as part of maven -->
+            <plugin>
+                <!-- Specify the maven code generator plugin
+                This plugin configuration replaces the library.xml
+                config file used to manually configure jOOQ and automates the generation
+                process here in the plugin.
+                -->
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <version>${jooq.version}</version>
+
+                <!-- The plugin should hook into the generate goal -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <!-- Manage the plugin's dependency. In this example, we'll use a PostgreSQL database -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>${postgres.version}</version>
+                    </dependency>
+                </dependencies>
+
+                <!-- Specify the plugin configuration.
+                     The configuration format is the same as for the standalone code generator -->
+                <configuration>
+
+                    <!-- JDBC connection parameters -->
+                    <jdbc>
+                        <driver>org.postgresql.Driver</driver>
+                        <url>jdbc:postgresql:first_dash</url>
+                        <user>postgres</user>
+                        <password>Dred_0108</password>
+                    </jdbc>
+
+                    <!-- Generator parameters -->
+                    <generator>
+                        <database>
+                            <name>org.jooq.util.postgres.PostgresDatabase</name>
+                            <includes>.*</includes>
+                            <excludes></excludes>
+                            <inputSchema>first</inputSchema>
+                        </database>
+                        <target>
+                            <packageName>org.technojays.first.model</packageName>
+                            <directory>src/main/java</directory>
+                        </target>
+                        <generate>
+                            <fluentSetters>true</fluentSetters>
+                            <pojos>true</pojos>
+                            <daos>false</daos>
+                            <interfaces>true</interfaces>
+                            <jpaAnnotations>true</jpaAnnotations>
+                        </generate>
+                    </generator>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

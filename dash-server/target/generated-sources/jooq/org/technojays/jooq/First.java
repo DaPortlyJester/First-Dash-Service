@@ -14,26 +14,26 @@ import org.jooq.Sequence;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 import org.technojays.jooq.Sequences;
+import org.technojays.jooq.tables.Alliance;
 import org.technojays.jooq.tables.AllianceRef;
-import org.technojays.jooq.tables.AllianceTypes;
-import org.technojays.jooq.tables.Alliances;
-import org.technojays.jooq.tables.Allies;
-import org.technojays.jooq.tables.AttributeTypes;
+import org.technojays.jooq.tables.AllianceType;
+import org.technojays.jooq.tables.Ally;
+import org.technojays.jooq.tables.AttributeType;
+import org.technojays.jooq.tables.Award;
 import org.technojays.jooq.tables.AwardType;
-import org.technojays.jooq.tables.Awards;
-import org.technojays.jooq.tables.Competitions;
-import org.technojays.jooq.tables.Events;
-import org.technojays.jooq.tables.Games;
-import org.technojays.jooq.tables.Locations;
-import org.technojays.jooq.tables.MatchScores;
-import org.technojays.jooq.tables.Matches;
-import org.technojays.jooq.tables.Programs;
-import org.technojays.jooq.tables.ScoreTypes;
-import org.technojays.jooq.tables.Sponsors;
-import org.technojays.jooq.tables.TeamAttributes;
-import org.technojays.jooq.tables.TeamScores;
-import org.technojays.jooq.tables.TeamSponsors;
-import org.technojays.jooq.tables.Teams;
+import org.technojays.jooq.tables.Competition;
+import org.technojays.jooq.tables.Event;
+import org.technojays.jooq.tables.Game;
+import org.technojays.jooq.tables.Location;
+import org.technojays.jooq.tables.Match;
+import org.technojays.jooq.tables.MatchScore;
+import org.technojays.jooq.tables.Program;
+import org.technojays.jooq.tables.ScoreType;
+import org.technojays.jooq.tables.Sponsor;
+import org.technojays.jooq.tables.Team;
+import org.technojays.jooq.tables.TeamAttribute;
+import org.technojays.jooq.tables.TeamScore;
+import org.technojays.jooq.tables.TeamSponsor;
 
 
 /**
@@ -49,7 +49,7 @@ import org.technojays.jooq.tables.Teams;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class First extends SchemaImpl {
 
-	private static final long serialVersionUID = -1992982805;
+	private static final long serialVersionUID = -1827010053;
 
 	/**
 	 * The reference instance of <code>first</code>
@@ -103,25 +103,25 @@ public class First extends SchemaImpl {
 
 	private final List<Table<?>> getTables0() {
 		return Arrays.<Table<?>>asList(
+			Alliance.ALLIANCE,
 			AllianceRef.ALLIANCE_REF,
-			AllianceTypes.ALLIANCE_TYPES,
-			Alliances.ALLIANCES,
-			Allies.ALLIES,
-			AttributeTypes.ATTRIBUTE_TYPES,
+			AllianceType.ALLIANCE_TYPE,
+			Ally.ALLY,
+			AttributeType.ATTRIBUTE_TYPE,
+			Award.AWARD,
 			AwardType.AWARD_TYPE,
-			Awards.AWARDS,
-			Competitions.COMPETITIONS,
-			Events.EVENTS,
-			Games.GAMES,
-			Locations.LOCATIONS,
-			MatchScores.MATCH_SCORES,
-			Matches.MATCHES,
-			Programs.PROGRAMS,
-			ScoreTypes.SCORE_TYPES,
-			Sponsors.SPONSORS,
-			TeamAttributes.TEAM_ATTRIBUTES,
-			TeamScores.TEAM_SCORES,
-			TeamSponsors.TEAM_SPONSORS,
-			Teams.TEAMS);
+			Competition.COMPETITION,
+			Event.EVENT,
+			Game.GAME,
+			Location.LOCATION,
+			Match.MATCH,
+			MatchScore.MATCH_SCORE,
+			Program.PROGRAM,
+			ScoreType.SCORE_TYPE,
+			Sponsor.SPONSOR,
+			Team.TEAM,
+			TeamAttribute.TEAM_ATTRIBUTE,
+			TeamScore.TEAM_SCORE,
+			TeamSponsor.TEAM_SPONSOR);
 	}
 }

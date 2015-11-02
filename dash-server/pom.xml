@@ -212,7 +212,11 @@
 
             <!-- jOOQ Maven configuration for code generation as part of maven -->
             <plugin>
-                <!-- Specify the maven code generator plugin -->
+                <!-- Specify the maven code generator plugin
+                This plugin configuration replaces the library.xml
+                config file used to manually configure jOOQ and automates the generation
+                process here in the plugin.
+                -->
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
                 <version>${jooq.version}</version>
@@ -244,7 +248,7 @@
                         <driver>org.postgresql.Driver</driver>
                         <url>jdbc:postgresql:first_dash</url>
                         <user>postgres</user>
-                        <password>Dred_0108</password>
+                        <password></password>
                     </jdbc>
 
                     <!-- Generator parameters -->
