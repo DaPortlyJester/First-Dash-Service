@@ -1,6 +1,6 @@
 package org.technojays.first.dao;
 
-import org.technojays.first.model.Team;
+import org.technojays.first.jooq.tables.pojos.Team;
 import org.technojays.first.model.Team_;
 
 import javax.persistence.PersistenceException;

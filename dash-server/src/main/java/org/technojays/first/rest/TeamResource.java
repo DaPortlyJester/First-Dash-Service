@@ -3,7 +3,7 @@ package org.technojays.first.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.technojays.first.exception.DashException;
-import org.technojays.first.model.Team;
+import org.technojays.first.jooq.tables.pojos.Team;
 import org.technojays.first.service.TeamService;
 
 import javax.inject.Inject;
@@ -76,6 +76,6 @@ public class TeamResource extends DashResource {
     public Team getTeamByTeamNumber(@PathParam("id") String idParam) throws DashException {
         logger.debug("Getting team by id {}", idParam);
         Long id = getLongFromParameter(idParam);
-        return teamService.getTeamById(id);
+        return teamService.getById(id);
     }
 }

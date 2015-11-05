@@ -1,6 +1,7 @@
 package org.technojays.first.service;
 
-import org.technojays.first.model.Team;
+
+import org.technojays.first.jooq.tables.pojos.Team;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface TeamService {
      * @param id System id of the team
      * @return Team with given id, null if team does not exist
      */
-    Team getTeamById(Long id);
+    Team getById(Long id);
 
     /**
      * Get team by FIRST team number

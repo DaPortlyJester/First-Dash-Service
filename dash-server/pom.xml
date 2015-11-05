@@ -119,6 +119,13 @@
             <version>${dash.version}</version>
         </dependency>
 
+        <!-- HikariCP Connection Pooling -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
+        </dependency>
+
         <!-- Postgresql Driver for Postgresql Database support -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -218,7 +225,7 @@
                 <!-- Specify the maven code generator plugin
                 This plugin configuration replaces the library.xml
                 config file used to manually configure jOOQ and automates the generation
-                process here in the plugin.
+                process as part of the maven resolution process.
                 -->
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
