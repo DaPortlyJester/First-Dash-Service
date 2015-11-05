@@ -3,7 +3,7 @@ package org.technojays.first.inject;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Singleton;
-import org.technojays.first.service.H4TeamService;
+import org.technojays.first.service.h4.H4TeamService;
 import org.technojays.first.service.TeamService;
 
 /**

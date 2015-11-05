@@ -1,14 +1,16 @@
-package org.technojays.first.service;
+package org.technojays.first.service.h4;
 
 import com.google.inject.Inject;
 import org.technojays.first.dao.TeamDAO;
-import org.technojays.first.model.Team;
+import org.technojays.first.jooq.tables.pojos.Team;
+import org.technojays.first.service.TeamService;
 
 import java.util.List;
 
 /**
  * @author Derelle.Redmond
  * @since 2/5/2015.
+ * @deprecated
  * <p/>
  * Team Service for Hibernate 4
  */
@@ -18,7 +20,7 @@ public class H4TeamService implements TeamService {
     TeamDAO teamDAO;
 
     @Override
-    public Team getTeamById(Long id) {
+    public Team getById(Long id) {
         return teamDAO.find(id);
     }
 

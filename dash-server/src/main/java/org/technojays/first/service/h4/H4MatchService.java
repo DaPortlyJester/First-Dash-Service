@@ -1,4 +1,4 @@
-package org.technojays.first.service;
+package org.technojays.first.service.h4;
 
 import com.google.inject.Inject;
 import org.technojays.first.dao.EventDAO;
@@ -8,6 +8,7 @@ import org.technojays.first.model.Event;
 import org.technojays.first.model.Match;
 import org.technojays.first.model.MatchType;
 import org.technojays.first.model.Team;
+import org.technojays.first.service.MatchService;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * @author Derelle.Redmond
  * @since 2/9/2015
+ * @deprecated
  *
  * Match Service for Hibernate 4
  */

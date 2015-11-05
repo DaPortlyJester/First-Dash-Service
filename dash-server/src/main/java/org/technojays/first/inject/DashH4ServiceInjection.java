@@ -6,8 +6,8 @@ import com.google.inject.Singleton;
 import org.technojays.first.dao.EventDAO;
 import org.technojays.first.dao.MatchDAO;
 import org.technojays.first.dao.TeamDAO;
-import org.technojays.first.service.H4MatchService;
-import org.technojays.first.service.H4TeamService;
+import org.technojays.first.service.h4.H4MatchService;
+import org.technojays.first.service.h4.H4TeamService;
 import org.technojays.first.service.MatchService;
 import org.technojays.first.service.TeamService;
 
