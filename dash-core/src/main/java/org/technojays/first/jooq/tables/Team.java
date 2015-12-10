@@ -33,7 +33,7 @@ import org.technojays.first.jooq.tables.records.TeamRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Team extends TableImpl<TeamRecord> {
 
-	private static final long serialVersionUID = -2080678949;
+	private static final long serialVersionUID = -1642174764;
 
 	/**
 	 * The reference instance of <code>first.team</code>
@@ -69,9 +69,9 @@ public class Team extends TableImpl<TeamRecord> {
 	public final TableField<TeamRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.CLOB, this, " name for this team");
 
 	/**
-	 * The column <code>first.team.short_name</code>. short name for this team
+	 * The column <code>first.team.short_name</code>. Team Short Name
 	 */
-	public final TableField<TeamRecord, String[]> SHORT_NAME = createField("short_name", org.jooq.impl.SQLDataType.VARCHAR.getArrayDataType(), this, "short name for this team");
+	public final TableField<TeamRecord, String> SHORT_NAME = createField("short_name", org.jooq.impl.SQLDataType.CLOB, this, "Team Short Name");
 
 	/**
 	 * Create a <code>first.team</code> table reference
@@ -116,7 +116,7 @@ public class Team extends TableImpl<TeamRecord> {
 	 */
 	@Override
 	public List<UniqueKey<TeamRecord>> getKeys() {
-		return Arrays.<UniqueKey<TeamRecord>>asList(Keys.TEAMS_PK, Keys.TEAMS_SN_UNIQUE);
+		return Arrays.<UniqueKey<TeamRecord>>asList(Keys.TEAMS_PK, Keys.UNIQ_TEAM_NUM);
 	}
 
 	/**

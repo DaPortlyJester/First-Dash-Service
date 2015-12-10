@@ -23,12 +23,19 @@ public interface TeamService {
     Team getById(Long id);
 
     /**
+     * Get team and info
+     * @param id
+     * @return
+     */
+    Team getTeamAndInfoById(Long id);
+
+    /**
      * Get team by FIRST team number
      *
      * @param teamNum Team number to find by
      * @return Team that has this team number, null if team does not exist
      */
-    Team getTeamByTeamNumber(Long teamNum);
+    Team getByTeamNumber(Long teamNum);
 
     /**
      * Get list of all teams
@@ -43,6 +50,20 @@ public interface TeamService {
      * @param team
      * @return
      */
-    Team saveTeam(Team team);
+    Team save(Team team);
+
+    /**
+     * Delete team by id
+     *
+     * @return true if successful, false otherwise
+     */
+    boolean deleteTeamById(Long id);
+
+    /**
+     * Delete team
+     *
+     * @return true if successful, false otherwise
+     */
+    boolean deleteTeam(Team team);
 
 }

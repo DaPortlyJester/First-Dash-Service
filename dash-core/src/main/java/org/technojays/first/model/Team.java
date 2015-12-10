@@ -8,6 +8,8 @@ import java.util.Set;
  * @since 1/17/2015
  * <p/>
  * Entity to represent team information.
+ *
+ * @deprecated JPA Entity model no longer used
  */
 
 @Entity

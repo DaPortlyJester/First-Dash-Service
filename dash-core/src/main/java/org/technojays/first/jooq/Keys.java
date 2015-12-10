@@ -121,7 +121,7 @@ public class Keys {
 	public static final UniqueKey<ScoreTypeRecord> MATCH_SCORE_TYPE_PK = UniqueKeys0.MATCH_SCORE_TYPE_PK;
 	public static final UniqueKey<SponsorRecord> SPONSORS_PK = UniqueKeys0.SPONSORS_PK;
 	public static final UniqueKey<TeamRecord> TEAMS_PK = UniqueKeys0.TEAMS_PK;
-	public static final UniqueKey<TeamRecord> TEAMS_SN_UNIQUE = UniqueKeys0.TEAMS_SN_UNIQUE;
+	public static final UniqueKey<TeamRecord> UNIQ_TEAM_NUM = UniqueKeys0.UNIQ_TEAM_NUM;
 	public static final UniqueKey<TeamAttributeRecord> TEAM_ATTRIBUTES_PK = UniqueKeys0.TEAM_ATTRIBUTES_PK;
 	public static final UniqueKey<TeamAttributeRecord> TEAM_ATTRIBUTE_UNIQUENESS = UniqueKeys0.TEAM_ATTRIBUTE_UNIQUENESS;
 	public static final UniqueKey<TeamScoreRecord> TEAM_SCORES_PK = UniqueKeys0.TEAM_SCORES_PK;
@@ -189,7 +189,7 @@ public class Keys {
 		public static final UniqueKey<ScoreTypeRecord> MATCH_SCORE_TYPE_PK = createUniqueKey(ScoreType.SCORE_TYPE, ScoreType.SCORE_TYPE.ID);
 		public static final UniqueKey<SponsorRecord> SPONSORS_PK = createUniqueKey(Sponsor.SPONSOR, Sponsor.SPONSOR.ID);
 		public static final UniqueKey<TeamRecord> TEAMS_PK = createUniqueKey(Team.TEAM, Team.TEAM.ID);
-		public static final UniqueKey<TeamRecord> TEAMS_SN_UNIQUE = createUniqueKey(Team.TEAM, Team.TEAM.SHORT_NAME);
+		public static final UniqueKey<TeamRecord> UNIQ_TEAM_NUM = createUniqueKey(Team.TEAM, Team.TEAM.NUMBER);
 		public static final UniqueKey<TeamAttributeRecord> TEAM_ATTRIBUTES_PK = createUniqueKey(TeamAttribute.TEAM_ATTRIBUTE, TeamAttribute.TEAM_ATTRIBUTE.ID);
 		public static final UniqueKey<TeamAttributeRecord> TEAM_ATTRIBUTE_UNIQUENESS = createUniqueKey(TeamAttribute.TEAM_ATTRIBUTE, TeamAttribute.TEAM_ATTRIBUTE.TEAM_ID);
 		public static final UniqueKey<TeamScoreRecord> TEAM_SCORES_PK = createUniqueKey(TeamScore.TEAM_SCORE, TeamScore.TEAM_SCORE.ID);

@@ -11,7 +11,7 @@ import org.technojays.first.exception.ServiceError;
 public class DashResource {
 
     protected Long getLongFromParameter(String longParam) throws DashException {
-        if(Strings.isNullOrEmpty(longParam)) {
+        if (Strings.isNullOrEmpty(longParam)) {
             throw new DashException(ServiceError.EMPTY_ID);
         }
 
@@ -21,4 +21,5 @@ public class DashResource {
             throw new DashException(ServiceError.BAD_NUMBER_FORMAT);
         }
     }
+
 }

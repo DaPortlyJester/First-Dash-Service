@@ -33,9 +33,9 @@ import org.technojays.first.jooq.tables.interfaces.ITeam;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 @Entity
 @Table(name = "team", schema = "first")
-public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Record5<Integer, Integer, Integer, String, String[]>, ITeam {
+public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Record5<Integer, Integer, Integer, String, String>, ITeam {
 
-	private static final long serialVersionUID = -1203552886;
+	private static final long serialVersionUID = -1178498260;
 
 	/**
 	 * Setter for <code>first.team.id</code>. system id forteam
@@ -86,7 +86,7 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	/**
 	 * Getter for <code>first.team.number</code>. number for this team
 	 */
-	@Column(name = "number", precision = 32)
+	@Column(name = "number", unique = true, precision = 32)
 	@Override
 	public Integer getNumber() {
 		return (Integer) getValue(2);
@@ -111,21 +111,21 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	}
 
 	/**
-	 * Setter for <code>first.team.short_name</code>. short name for this team
+	 * Setter for <code>first.team.short_name</code>. Team Short Name
 	 */
 	@Override
-	public TeamRecord setShortName(String[] value) {
+	public TeamRecord setShortName(String value) {
 		setValue(4, value);
 		return this;
 	}
 
 	/**
-	 * Getter for <code>first.team.short_name</code>. short name for this team
+	 * Getter for <code>first.team.short_name</code>. Team Short Name
 	 */
-	@Column(name = "short_name", unique = true)
+	@Column(name = "short_name")
 	@Override
-	public String[] getShortName() {
-		return (String[]) getValue(4);
+	public String getShortName() {
+		return (String) getValue(4);
 	}
 
 	// -------------------------------------------------------------------------
@@ -148,7 +148,7 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row5<Integer, Integer, Integer, String, String[]> fieldsRow() {
+	public Row5<Integer, Integer, Integer, String, String> fieldsRow() {
 		return (Row5) super.fieldsRow();
 	}
 
@@ -156,7 +156,7 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Row5<Integer, Integer, Integer, String, String[]> valuesRow() {
+	public Row5<Integer, Integer, Integer, String, String> valuesRow() {
 		return (Row5) super.valuesRow();
 	}
 
@@ -196,7 +196,7 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Field<String[]> field5() {
+	public Field<String> field5() {
 		return Team.TEAM.SHORT_NAME;
 	}
 
@@ -236,7 +236,7 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String[] value5() {
+	public String value5() {
 		return getShortName();
 	}
 
@@ -280,7 +280,7 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TeamRecord value5(String[] value) {
+	public TeamRecord value5(String value) {
 		setShortName(value);
 		return this;
 	}
@@ -289,7 +289,7 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public TeamRecord values(Integer value1, Integer value2, Integer value3, String value4, String[] value5) {
+	public TeamRecord values(Integer value1, Integer value2, Integer value3, String value4, String value5) {
 		value1(value1);
 		value2(value2);
 		value3(value3);
@@ -337,7 +337,7 @@ public class TeamRecord extends UpdatableRecordImpl<TeamRecord> implements Recor
 	/**
 	 * Create a detached, initialised TeamRecord
 	 */
-	public TeamRecord(Integer id, Integer programId, Integer number, String name, String[] shortName) {
+	public TeamRecord(Integer id, Integer programId, Integer number, String name, String shortName) {
 		super(Team.TEAM);
 
 		setValue(0, id);

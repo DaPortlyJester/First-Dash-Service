@@ -22,13 +22,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Team implements Serializable {
 
-	private static final long serialVersionUID = -752219581;
+	private static final long serialVersionUID = 1242043497;
 
-	private Integer  id;
-	private Integer  programId;
-	private Integer  number;
-	private String   name;
-	private String[] shortName;
+	private Integer id;
+	private Integer programId;
+	private Integer number;
+	private String  name;
+	private String  shortName;
 
 	public Team() {}
 
@@ -41,11 +41,11 @@ public class Team implements Serializable {
 	}
 
 	public Team(
-		Integer  id,
-		Integer  programId,
-		Integer  number,
-		String   name,
-		String[] shortName
+		Integer id,
+		Integer programId,
+		Integer number,
+		String  name,
+		String  shortName
 	) {
 		this.id = id;
 		this.programId = programId;
@@ -90,11 +90,11 @@ public class Team implements Serializable {
 		return this;
 	}
 
-	public String[] getShortName() {
+	public String getShortName() {
 		return this.shortName;
 	}
 
-	public Team setShortName(String[] shortName) {
+	public Team setShortName(String shortName) {
 		this.shortName = shortName;
 		return this;
 	}

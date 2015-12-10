@@ -28,13 +28,13 @@ import org.technojays.first.jooq.tables.interfaces.ITeam;
 @Table(name = "team", schema = "first")
 public class Team implements ITeam {
 
-	private static final long serialVersionUID = 1372946364;
+	private static final long serialVersionUID = -2127098984;
 
-	private Integer  id;
-	private Integer  programId;
-	private Integer  number;
-	private String   name;
-	private String[] shortName;
+	private Integer id;
+	private Integer programId;
+	private Integer number;
+	private String  name;
+	private String  shortName;
 
 	public Team() {}
 
@@ -47,11 +47,11 @@ public class Team implements ITeam {
 	}
 
 	public Team(
-		Integer  id,
-		Integer  programId,
-		Integer  number,
-		String   name,
-		String[] shortName
+		Integer id,
+		Integer programId,
+		Integer number,
+		String  name,
+		String  shortName
 	) {
 		this.id = id;
 		this.programId = programId;
@@ -85,7 +85,7 @@ public class Team implements ITeam {
 		return this;
 	}
 
-	@Column(name = "number", precision = 32)
+	@Column(name = "number", unique = true, precision = 32)
 	@Override
 	public Integer getNumber() {
 		return this.number;
@@ -109,14 +109,14 @@ public class Team implements ITeam {
 		return this;
 	}
 
-	@Column(name = "short_name", unique = true)
+	@Column(name = "short_name")
 	@Override
-	public String[] getShortName() {
+	public String getShortName() {
 		return this.shortName;
 	}
 
 	@Override
-	public Team setShortName(String[] shortName) {
+	public Team setShortName(String shortName) {
 		this.shortName = shortName;
 		return this;
 	}

@@ -22,7 +22,7 @@ import javax.ws.rs.ApplicationPath;
  * through HK2 Guice Bridge. Builds Guice injector from Injection modules and registers packages on the default FIRST
  * Dash REST package path.
  */
-@ApplicationPath("api/v1")
+@ApplicationPath("api/v1/")
 public class DashAppConfig extends ResourceConfig {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -35,11 +35,10 @@ public class DashAppConfig extends ResourceConfig {
         logger.info("Building Injectors");
         Injector injector = Guice.createInjector(
                 new ConfigurationInjection(),
-                new JSONInjection()
+                new JSONInjection(),
+                new DashModule(),
+                new JooqInjection()
         );
-
-//        PersistentInit persistenceInit = new PersistentInit();
-        PersistenceInit persistenceInit = new PersistenceInit();
 
         GuiceBridge.getGuiceBridge().initializeGuiceBridge(serviceLocator);
         GuiceIntoHK2Bridge guiceBridge = serviceLocator.getService(GuiceIntoHK2Bridge.class);

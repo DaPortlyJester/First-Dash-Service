@@ -59,7 +59,7 @@ public interface ITeam extends Serializable {
 	/**
 	 * Getter for <code>first.team.number</code>. number for this team
 	 */
-	@Column(name = "number", precision = 32)
+	@Column(name = "number", unique = true, precision = 32)
 	public Integer getNumber();
 
 	/**
@@ -74,15 +74,15 @@ public interface ITeam extends Serializable {
 	public String getName();
 
 	/**
-	 * Setter for <code>first.team.short_name</code>. short name for this team
+	 * Setter for <code>first.team.short_name</code>. Team Short Name
 	 */
-	public ITeam setShortName(String[] value);
+	public ITeam setShortName(String value);
 
 	/**
-	 * Getter for <code>first.team.short_name</code>. short name for this team
+	 * Getter for <code>first.team.short_name</code>. Team Short Name
 	 */
-	@Column(name = "short_name", unique = true)
-	public String[] getShortName();
+	@Column(name = "short_name")
+	public String getShortName();
 
 	// -------------------------------------------------------------------------
 	// FROM and INTO

@@ -78,6 +78,13 @@ public class TeamDao extends DAOImpl<TeamRecord, org.technojays.first.jooq.table
 	}
 
 	/**
+	 * Fetch a unique record that has <code>number = value</code>
+	 */
+	public org.technojays.first.jooq.tables.pojos.Team fetchOneByNumber(Integer value) {
+		return fetchOne(Team.TEAM.NUMBER, value);
+	}
+
+	/**
 	 * Fetch records that have <code>name IN (values)</code>
 	 */
 	public List<org.technojays.first.jooq.tables.pojos.Team> fetchByName(String... values) {
@@ -87,14 +94,7 @@ public class TeamDao extends DAOImpl<TeamRecord, org.technojays.first.jooq.table
 	/**
 	 * Fetch records that have <code>short_name IN (values)</code>
 	 */
-	public List<org.technojays.first.jooq.tables.pojos.Team> fetchByShortName(String[]... values) {
+	public List<org.technojays.first.jooq.tables.pojos.Team> fetchByShortName(String... values) {
 		return fetch(Team.TEAM.SHORT_NAME, values);
-	}
-
-	/**
-	 * Fetch a unique record that has <code>short_name = value</code>
-	 */
-	public org.technojays.first.jooq.tables.pojos.Team fetchOneByShortName(String[] value) {
-		return fetchOne(Team.TEAM.SHORT_NAME, value);
 	}
 }
