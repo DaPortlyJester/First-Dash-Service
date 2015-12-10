@@ -42,6 +42,15 @@
             <version>${guice.version}</version>
         </dependency>
 
+        <!-- Lombok annotations-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.6</version>
+            <scope>provided</scope>
+        </dependency>
+
+
         <!--
         Because moxy gets a teabag ...
         Jackson (FasterXml) for Joda and Guice Injection JSON Support -->

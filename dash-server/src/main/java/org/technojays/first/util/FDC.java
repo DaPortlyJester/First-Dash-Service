@@ -19,6 +19,7 @@ public class FDC {
     public static final String DASH_H4_CONFIG_FILE = "dash.h4.config.file";
 
     public static final String DASH_CONFIG_FILE = "dash.config.file";
+    public static final String DEFAULT_DASH_CONFIG_FILE = "/etc/dash/application.properties";
 
     public static final String DATASOURCE_CLASS_NAME = "dataSourceClassName";
     public static final String DATASOURCE_USER = "dataSource.user";
