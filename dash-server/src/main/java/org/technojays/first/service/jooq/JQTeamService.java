@@ -36,7 +36,7 @@ public class JQTeamService implements TeamService {
 
     @Override
     public Team getByTeamNumber(Long teamNum) {
-        return teamDao.fetchOne(Tables.TEAM.ID, teamNum.intValue());
+        return teamDao.fetchOneByNumber(teamNum.intValue());
     }
 
     @Override
