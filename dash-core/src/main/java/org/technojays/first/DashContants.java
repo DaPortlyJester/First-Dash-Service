@@ -10,4 +10,5 @@ public class DashContants {
 
     public static final String DASH_REST_PACKAGE = "org.technojays.first.rest";
     public static final String FASTERXML_PACKAGE = "com.fasterxml.jackson.jaxrs.json";
+    public static final String DASH_INJECT_PACKAGE = "org.technojays.first.inject";
 }

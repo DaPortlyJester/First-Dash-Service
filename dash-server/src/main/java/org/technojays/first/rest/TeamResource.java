@@ -1,34 +1,32 @@
 package org.technojays.first.rest;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.technojays.first.exception.DashException;
 import org.technojays.first.jooq.tables.pojos.Team;
 import org.technojays.first.service.TeamService;
-import org.technojays.first.util.FDC;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
 
 /**
  * @author DaPortlyJester
  * @since 1/19/2015
- * <p/>
+ * <p>
  * REST endpoint for retrieving team information
  */
 @Path("team")
 @Slf4j
 public class TeamResource extends DashResource {
     public static final String RESOURCE_NAME = "team";
-
-    private TeamService teamService;
-
     @Context
     UriInfo uriInfo;
+    private TeamService teamService;
 
     @Inject
     public TeamResource(TeamService teamService) {
@@ -61,7 +59,7 @@ public class TeamResource extends DashResource {
     public List<Team> getTeams() {
         log.debug("Getting full list of teams");
         List<Team> teams = teamService.getTeams();
-        if(teams == null || teams.isEmpty()) {
+        if (teams == null || teams.isEmpty()) {
             return null;
         }
         return teams;
